@@ -18,8 +18,6 @@ public class NewClientView extends JFrame {
 
 	NewClientController controller = new NewClientController(this);
 
-
-
 	public NewClientView() throws HeadlessException {
 		super();
 		initGUI();

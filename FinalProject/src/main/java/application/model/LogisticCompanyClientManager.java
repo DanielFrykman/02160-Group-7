@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 
-public class LogisticCompanyClientManager {
+public class LogisticCompanyClientManager extends User {
 	
 	// --- singleton---------------
 	private static LogisticCompanyClientManager instance;
-	private LogisticCompanyClientManager() {}
+	private LogisticCompanyClientManager(boolean isAdmin, String name) {
+		super(isAdmin, name);
+	}
 
 	public static LogisticCompanyClientManager getInstance() {
 		if(instance== null) {
-			instance= new LogisticCompanyClientManager();
+			instance= new LogisticCompanyClientManager(true, "admin");
 		}
 		return instance;
 	}
