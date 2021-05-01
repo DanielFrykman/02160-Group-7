@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
-public class LogisticCompanyContainerManager {
+public class LogisticCompanyContainerManager extends Manager<Container> {
 	
 	// --- singleton---------------
 	private static LogisticCompanyContainerManager instance;
@@ -21,13 +21,13 @@ public class LogisticCompanyContainerManager {
 	
 	private ArrayList<Container> containers = new ArrayList<Container>();
 
-	public ArrayList<Container> getContainers() {
-		return containers;
-	}
+//	public ArrayList<Container> getContainers() {
+//		return containers;
+//	}
 	
 	private void createContainer(String origin) {
 		Container newContainer = new Container(new ArrayList<Journey>(), origin, UUID.randomUUID(), false);
-		containers.add(newContainer);
+		list.add(newContainer);
 	}
 
 	public Container getContainerByOrigin(String origin) {

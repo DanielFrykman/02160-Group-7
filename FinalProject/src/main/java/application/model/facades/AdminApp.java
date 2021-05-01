@@ -19,29 +19,33 @@ public class AdminApp extends AbstractTableModel {
 		return instance;
 	}
 
-	LogisticCompanyClientManager clientManager = LogisticCompanyClientManager.getInstance();
+	LogisticCompanyClientManager admin = LogisticCompanyClientManager.getInstance();
 	LogisticCompanyJourneyManager journeyManager = LogisticCompanyJourneyManager.getInstance();
 	LogisticCompanyContainerManager containerManager = LogisticCompanyContainerManager.getInstance();
+	
+	public LogisticCompanyClientManager getAdmin() {
+		return admin;
+	}
 
 	public void createClient(String clientName, String address, String referencePerson, String email) {
-		clientManager.newClient(clientName, address, referencePerson, email);
+		admin.newClient(clientName, address, referencePerson, email);
 		fireTableDataChanged();
 	}
 
 	public Client searchClientByName(String clintName){
-		return clientManager.getClientByName(clintName);
+		return admin.getClientByName(clintName);
 	}
 
 	public Client searchClientByMail(String email) {
-		return  clientManager.getClientByEmail(email);
+		return  admin.getClientByEmail(email);
 	}
 
 	public Client getClient(int index) {
-		return clientManager.getClinets().get(index);
+		return admin.getClinets().get(index);
 	}
 
 	public ArrayList<Client> getClients(){
-		return clientManager.getClinets();
+		return admin.getClinets();
 	}
 
 	public ArrayList<Container> getClientContainersByName(String clientName){
@@ -53,37 +57,37 @@ public class AdminApp extends AbstractTableModel {
 	}
 
 	public void updateClientName(String currentClientName, String newClientName) {
-		clientManager.updateClientName(currentClientName, newClientName);
+		admin.updateClientName(currentClientName, newClientName);
 	}
 
 	public void updateClientAddress(String currentClientName, String address) {
-		clientManager.updateClientAddress(currentClientName, address);
+		admin.updateClientAddress(currentClientName, address);
 	}
 
 	public void updateClientRefrencePerson(String currentClientName, String refrencePerson) {
-		clientManager.updateClientRefrencePerson(currentClientName, refrencePerson);
+		admin.updateClientRefrencePerson(currentClientName, refrencePerson);
 	}
 
 	public void updateClientEmail(String currentClientName, String email) {
-		clientManager.updateClientEmail(currentClientName, email);
+		admin.updateClientEmail(currentClientName, email);
 	}
 
 	public void deleteClient(int i) {
 		ArrayList<Container> clientsContainers = new ArrayList<Container>();
-		clientsContainers = clientManager.getClinets().get(i).getClientsContainers();
+		clientsContainers = admin.getClinets().get(i).getClientsContainers();
 		for(int j = 0; j<clientsContainers.size(); j++) {
 			journeyManager.endJourney(clientsContainers.get(j));
 		}
-		clientManager.getClinets().remove(i);
+		admin.getClinets().remove(i);
 	}
 
 	public void addViewer(Container container, String owner,String viewer) {
-		clientManager.addViewer(owner, viewer);
-		clientManager.shareContainer(container, viewer);
+		admin.addViewer(owner, viewer);
+		admin.shareContainer(container, viewer);
 	}
 
 	public ArrayList<Container> getViewerContainers(String client) {
-		return clientManager.getClientByName(client).getViewerContainers();
+		return admin.getClientByName(client).getViewerContainers();
 
 	}
 
@@ -96,7 +100,7 @@ public class AdminApp extends AbstractTableModel {
 	}
 
 	public void resetApp() {
-		clientManager.getClinets().clear();
+		admin.getClinets().clear();
 		containerManager.getContainers().clear();
 	}
 

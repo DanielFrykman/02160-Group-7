@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Box;
+import javax.swing.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,9 +18,9 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableModel;
 
-import application.controller.AdminController;
-import application.model.Session;
-import application.model.facades.AdminApp;
+import application.controller.*;
+import application.model.*;
+import application.model.facades.*;
 
 public class AdminView extends JFrame {
 

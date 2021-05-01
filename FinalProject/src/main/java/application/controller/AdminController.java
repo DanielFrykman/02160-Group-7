@@ -1,10 +1,7 @@
 package application.controller;
 
 import javax.swing.JOptionPane;
-
-
-import application.model.*;
-import application.model.facades.AdminApp;
+import application.model.facades.*;
 import application.view.*;
 
 public class AdminController {

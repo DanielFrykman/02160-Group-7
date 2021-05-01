@@ -1,7 +1,7 @@
 package application.controller;
 
-import application.model.Session;
-import application.view.AdminView;
+import application.model.facades.*;
+import application.view.*;
 
 public class ApplicationController {
 	

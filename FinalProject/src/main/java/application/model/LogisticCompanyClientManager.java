@@ -4,13 +4,11 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 
-public class LogisticCompanyClientManager extends User {
+public class LogisticCompanyClientManager extends Manager<Client> {
 	
 	// --- singleton---------------
 	private static LogisticCompanyClientManager instance;
-	private LogisticCompanyClientManager(boolean isAdmin, String name) {
-		super(isAdmin, name);
-	}
+	private LogisticCompanyClientManager(boolean isAdmin, String name) {}
 
 	public static LogisticCompanyClientManager getInstance() {
 		if(instance== null) {
@@ -87,18 +85,4 @@ public class LogisticCompanyClientManager extends User {
 		getClientByName(viewer).addViewerContainers(container);
 	}
 
-	@Override
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public String getName() {
-		return this.name;
-	}
-
-	@Override
-	public boolean isAdmin() {
-		return this.isAdmin();
-	}
 }

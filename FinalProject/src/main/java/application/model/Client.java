@@ -3,8 +3,9 @@ package application.model;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Client extends User {
+public class Client {
 	
+	private String name;
 	private String email;
 	private String address;
 	private String referencePerson;
@@ -15,7 +16,7 @@ public class Client extends User {
 	private ArrayList<Client> viewers = new ArrayList<Client>();
 	
 	public Client(String name, String address, String referencePerson, String email, UUID clientID) {
-		super(false, name);
+		this.name = name;
 		this.email = email;
 		this.address = address;
 		this.referencePerson = referencePerson;
@@ -50,14 +51,6 @@ public class Client extends User {
 		return clientsContainers;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -90,9 +83,12 @@ public class Client extends User {
 		this.clientsContainers = clientsContainers;
 	}
 
-	@Override
-	public boolean isAdmin() {
-		return this.isAdmin();
+	public void setName(String name) {
+		this.name=name;
+	}
+
+	public String getName() {
+		return name;
 	}
 
 	

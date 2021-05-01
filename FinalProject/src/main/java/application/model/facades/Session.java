@@ -1,23 +1,29 @@
 package application.model.facades;
 
+import application.model.*;
+
 public final class Session {
 
-	private User user;
+	private Client client;
 	private String role;
-	
-	public Session() {
-		role = "Admin";
-	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(Client client) {
+		this.client = client;
+		this.role ="Client";
 	}
 	
-	public String getUsername() {
-		return user.getUsername();
-	}
 	
 	public String getRole() {
-		return role;
+		return this.role;
+	}
+
+	public String getUsername() {
+		if (role.equals("Admin")) return "Admin";
+		return client.getName();
+	}
+
+	public void setAdmin() {
+		this.role = "Admin";
+		
 	}
 }
