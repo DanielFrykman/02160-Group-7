@@ -8,32 +8,32 @@ public class LogisticCompanyClientManager extends Manager<Client> {
 	
 	// --- singleton---------------
 	private static LogisticCompanyClientManager instance;
-	private LogisticCompanyClientManager(boolean isAdmin, String name) {}
+	private LogisticCompanyClientManager() {}
 
 	public static LogisticCompanyClientManager getInstance() {
 		if(instance== null) {
-			instance= new LogisticCompanyClientManager(true, "admin");
+			instance= new LogisticCompanyClientManager();
 		}
 		return instance;
 	}
 	// --- singleton---------------
 	
-	private ArrayList<Client> clients = new ArrayList<Client>();
+//	private ArrayList<Client> clients = new ArrayList<Client>();
 
 	public void newClient(String clientName, String address, String referencePerson, String email) {
 		Client client = new Client(clientName, address, referencePerson, email, UUID.randomUUID());
-		clients.add(client);
+		getList().add(client);
 	}
 	
 	public ArrayList<Client> getClinets() {
-		return clients;
+		return getList();
 	}
 
 	public Client getClientByName(String client) {
 		Client placeholder = null;
 
-		for(int i = 0; i < clients.size(); i++) {
-			if(clients.get(i).getName().equals(client)) placeholder = clients.get(i);
+		for(int i = 0; i < getList().size(); i++) {
+			if(getList().get(i).getName().equals(client)) placeholder = getList().get(i);
 		}
 		return placeholder;
 	}
@@ -41,16 +41,16 @@ public class LogisticCompanyClientManager extends Manager<Client> {
 	public Client getClientByEmail(String email) {
 		Client placeholder = null;
 
-		for(int i = 0; i < clients.size(); i++) {
-			if(clients.get(i).getEmail().equals(email)) placeholder = clients.get(i);
+		for(int i = 0; i < getList().size(); i++) {
+			if(getList().get(i).getEmail().equals(email)) placeholder = getList().get(i);
 		}
 		return placeholder;
 	}
 
 	public boolean addContainerToClient(String clientName, Container container) {
 		Client client = null;
-		for(int i = 0; i<clients.size(); i++) {
-			if(clients.get(i).getName().equals(clientName)) client = clients.get(i);
+		for(int i = 0; i<getList().size(); i++) {
+			if(getList().get(i).getName().equals(clientName)) client = getList().get(i);
 		}
 		if(client==null) return false;
 		client.addContainer(container);
@@ -58,7 +58,7 @@ public class LogisticCompanyClientManager extends Manager<Client> {
 	}
 
 	public void deleteClient(int i) {
-		clients.remove(i);
+		getList().remove(i);
 	}
 
 	public void updateClientName(String currentClientName, String newClientName) {

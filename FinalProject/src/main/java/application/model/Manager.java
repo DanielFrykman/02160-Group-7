@@ -13,10 +13,6 @@ public class Manager<T> {
 		return list.get(i);
 	}
 
-	public Manager(ArrayList<T> list) {
-		super();
-		this.list = list;
-	}
 	
 	
 }

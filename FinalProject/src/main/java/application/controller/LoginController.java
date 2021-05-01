@@ -1,6 +1,5 @@
 package application.controller;
 
-import application.model.*;
 import application.model.facades.*;
 import application.view.*;
 

@@ -92,7 +92,7 @@ public class AdminApp extends AbstractTableModel {
 	}
 
 	public ArrayList<Container> getAllContainers() {
-		return containerManager.getContainers();
+		return containerManager.getList();
 	}
 
 	public Container getContainer(int index) {
@@ -101,7 +101,7 @@ public class AdminApp extends AbstractTableModel {
 
 	public void resetApp() {
 		admin.getClinets().clear();
-		containerManager.getContainers().clear();
+		containerManager.getList().clear();
 	}
 
 	@Override

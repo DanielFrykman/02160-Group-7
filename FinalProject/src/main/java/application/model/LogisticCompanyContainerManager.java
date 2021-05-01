@@ -19,22 +19,22 @@ public class LogisticCompanyContainerManager extends Manager<Container> {
 	}
 	// --- singleton---------------
 	
-	private ArrayList<Container> containers = new ArrayList<Container>();
-
+//	private ArrayList<Container> containers = new ArrayList<Container>();
+//
 //	public ArrayList<Container> getContainers() {
 //		return containers;
 //	}
 	
 	private void createContainer(String origin) {
 		Container newContainer = new Container(new ArrayList<Journey>(), origin, UUID.randomUUID(), false);
-		list.add(newContainer);
+		getList().add(newContainer);
 	}
 
 	public Container getContainerByOrigin(String origin) {
-		for(int i = 0; i<containers.size(); i++) {
-			if(!containers.get(i).isOnJourney()) {
-				if(containers.get(i).getOrigin().equals(origin)) {
-					return containers.get(i);
+		for(int i = 0; i<getList().size(); i++) {
+			if(!getList().get(i).isOnJourney()) {
+				if(getList().get(i).getOrigin().equals(origin)) {
+					return getList().get(i);
 				}
 			}
 		}
