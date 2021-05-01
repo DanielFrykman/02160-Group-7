@@ -1,17 +1,17 @@
 package application.controller;
 
 import application.model.facades.*;
-import application.view.InventoryView;
+import application.view.*;
 
 public class ApplicationController {
 	
 	private LoginController loginController;
-	private InventoryController inventoryController;
+	private AdminController inventoryController;
 	
 	public void manageInventory(Session session) {
-		inventoryController = new InventoryController(session);
+		inventoryController = new AdminController(session);
 
-		InventoryView invView = new InventoryView(inventoryController);
+		AdminView invView = new AdminView(inventoryController);
 		inventoryController.setView(invView);
 		inventoryController.display();
 	}

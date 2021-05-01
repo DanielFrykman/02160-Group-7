@@ -1,29 +1,35 @@
 package application.controller;
 
-import application.model.Session;
-import application.model.User;
-import application.view.LoginView;
+import application.model.facades.*;
+import application.view.*;
 
 public class LoginController {
 
 	private ApplicationController application;
 	private Session session;
 	private LoginView view;
-	
+	private AdminApp adminApp = AdminApp.getInstance();
+
+
 	public LoginController(ApplicationController application) {
 		this.application = application;
 		this.session = new Session();
 		this.view = new LoginView(this);
 	}
-	
-	public void validateCredentials(String username, String password) {
-		User user = new User();
-		user.setUsername(username);
-		user.load();
-		if ((!username.isEmpty()) && user.passwordMatches(password)) {
-			session.setUser(user);
+
+	public void validateCredentials(String username) {
+		for(int i = 0; i<adminApp.getClients().size(); i++) {
+			if(username.equals(adminApp.getClient(i).getName())) {
+				session.setUser(adminApp.getClient(i)); 
+				view.setVisible(false);
+				application.manageInventory(session);
+			}
+		}
+		if(username.equals("admin")) {
+			session.setAdmin();
 			view.setVisible(false);
 			application.manageInventory(session);
+
 		} else {
 			view.showError();
 		}
