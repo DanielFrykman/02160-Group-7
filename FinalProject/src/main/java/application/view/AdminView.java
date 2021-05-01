@@ -14,12 +14,9 @@ import javax.swing.JTable;
 import javax.swing.JToolBar;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableModel;
 
-import application.controller.*;
-import application.model.*;
+import application.controller.AdminController;
 import application.model.facades.*;
 
 public class AdminView extends JFrame {
