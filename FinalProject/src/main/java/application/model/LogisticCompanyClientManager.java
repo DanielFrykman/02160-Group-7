@@ -86,4 +86,19 @@ public class LogisticCompanyClientManager extends User {
 	public void shareContainer(Container container, String viewer) {
 		getClientByName(viewer).addViewerContainers(container);
 	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
+	public String getName() {
+		return this.name;
+	}
+
+	@Override
+	public boolean isAdmin() {
+		return this.isAdmin();
+	}
 }

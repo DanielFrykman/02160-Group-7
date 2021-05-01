@@ -22,19 +22,13 @@ public class Client extends User {
 		this.clientID = clientID;
 	}
 	
-	
-	
 	public ArrayList<Client> getViewers() {
 		return viewers;
 	}
 
-
-
 	public void addViewer(Client viewer) {
 		this.viewers.add(viewer);
 	}
-
-
 
 	public ArrayList<Container> getViewerContainers() {
 		return viewerContainers;
@@ -95,6 +89,14 @@ public class Client extends User {
 	public void setClientsContainers(ArrayList<Container> clientsContainers) {
 		this.clientsContainers = clientsContainers;
 	}
+
+	@Override
+	public boolean isAdmin() {
+		return this.isAdmin();
+	}
+
+	
+	
 	
 	
 

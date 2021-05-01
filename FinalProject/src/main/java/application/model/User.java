@@ -1,7 +1,8 @@
 package application.model;
 
-public class User {
+public abstract class User {
 
+	@SuppressWarnings("unused")
 	private boolean isAdmin;
 	protected String name;
 	
@@ -11,22 +12,10 @@ public class User {
 		this.name = name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
+	public abstract void setName(String name);
 	
-	public String getName() {
-		return name;
-	}
+	public abstract String getName();
 
-	public boolean isAdmin() {
-		return isAdmin;
-	}
-
-	public void setAdmin(boolean isAdmin) {
-		this.isAdmin = isAdmin;
-	}
-	
-	
+	public abstract boolean isAdmin();
 	
 }
