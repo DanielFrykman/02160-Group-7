@@ -18,82 +18,78 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableModel;
 
-import application.controller.AdminController;
+import application.controller.ClientController2;
 import application.model.tables.Session;
 
-public class AdminView extends JFrame {
+public class ClientView2 extends JFrame {
 
-	private static final long serialVersionUID = 989075282041187452L;
-	private AdminController controller;
+	private static final long serialVersionUID = 989175282041187452L;
+	private ClientController2 controller;
 	private JTable tblInventory;
 	private JLabel lblSession;
-	
-	public AdminView(AdminController controller) {
+
+	public ClientView2(ClientController2 controller) {
 		this.controller = controller;
 		initGUI();
 	}
-	
+
 	private void initGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Inventory Manager");
+		setTitle("Client View 2");
 		setPreferredSize(new Dimension(800, 600));
-		
-		// buttons
-		JButton btnRegister = new JButton("Register new client");
-	    btnRegister.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						controller.registerClient();
-					}
-				});
-		JButton btnGet = new JButton("Get client information");
-		JButton btnNew = new JButton("Add data");
-		JButton btnDelete = new JButton("Remove data");
-		btnDelete.setEnabled(false);
-		JButton btnLogout = new JButton("Logout");
-		btnLogout.addActionListener(new ActionListener() {
+
+		JButton btnAddViewer = new JButton("Add viewer");
+		btnAddViewer.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.logout();
+				controller.addViewer();
 			}
-			
 		});
 		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.goBack();
+			}
+		});
+
 		// toolbar
 		lblSession = new JLabel();
 		lblSession.setHorizontalAlignment(SwingConstants.RIGHT);
-		
+
 		JToolBar toolbar = new JToolBar();
-		toolbar.add(btnRegister);
-		toolbar.add(btnGet);
-		toolbar.add(btnNew);
-		toolbar.add(btnDelete);
+		toolbar.add(btnAddViewer);
 		toolbar.add(Box.createHorizontalGlue());
 		toolbar.add(lblSession);
-		toolbar.add(btnLogout);
+		toolbar.add(btnBack);
 		add(toolbar, BorderLayout.NORTH);
-		
+
 		// table
 		tblInventory = new JTable();
 		tblInventory.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tblInventory.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				btnDelete.setEnabled((tblInventory.getSelectedRow() >= 0));
+		
 			}
 		});
+		tblInventory.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		add(new JScrollPane(tblInventory), BorderLayout.CENTER);
-		
+
 		pack();
 		setLocationRelativeTo(null);
 	}
-	
+
+
+
 	public void setTableModel(TableModel model) {
 		tblInventory.setModel(model);
-		
+
 	}
 
 	public void setSession(Session sessionModel) {
-		lblSession.setText("<html>" + sessionModel.getUsername() + " <i>(" + "Admin" + ")</i></html>");
+		lblSession.setText("<html>" + sessionModel.getUsername() + " <i>(" + "Client" + ")</i></html>");
 	}
+
 }

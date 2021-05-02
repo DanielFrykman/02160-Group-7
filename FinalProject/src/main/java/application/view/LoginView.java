@@ -24,7 +24,6 @@ public class LoginView extends JFrame {
 	private JButton btnLogin;
 	private JTextField txtLogin;
 	private LoginController controller;
-	private KeyListener keyListener;
 
 	public LoginView(LoginController controller) {
 		this.controller = controller;
@@ -37,15 +36,12 @@ public class LoginView extends JFrame {
 		setPreferredSize(new Dimension(800, 600));
 		setLayout(new GridBagLayout());
 		
-		
-		
 		txtLogin = new JTextField(15);
 		btnLogin = new JButton("Login");
-		txtLogin.addKeyListener(keyListener = new KeyListener() {
+		txtLogin.addKeyListener(new KeyListener() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 			    if (e.getKeyCode()==KeyEvent.VK_ENTER){
-			    	removeKeyListener(keyListener);
 			    	controller.validateCredentials(txtLogin.getText());
 			     }			
 			}
@@ -68,6 +64,7 @@ public class LoginView extends JFrame {
 			}
 			
 		});
+		
 		
 		add(new JLabel("Username"), GridBagLayoutUtils.constraint(1, 0, 5,"left"));
 		add(txtLogin, GridBagLayoutUtils.constraint(1, 1, 5));

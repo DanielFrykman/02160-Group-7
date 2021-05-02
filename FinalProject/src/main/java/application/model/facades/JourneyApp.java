@@ -33,5 +33,9 @@ public class JourneyApp {
 	public Journey getLatestJourney(Container container) {
 		return containerManager.getLatestJourney(container);
 	}
+	
+	public Journey getLatestJourneyByClientName(String name, int containerIndex) {
+		return AdminApp.getInstance().searchClientByName(name).getClientsContainers().get(containerIndex).getLatestJourney();
+	}
 
 }
