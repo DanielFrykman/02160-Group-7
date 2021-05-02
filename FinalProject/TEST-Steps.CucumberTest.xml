@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite tests="19" failures="0" name="Steps.CucumberTest" time="0.25" errors="0" skipped="0">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home/jre/lib"/>
+    <property name="java.vm.version" value="25.291-b10"/>
+    <property name="gopherProxySet" value="false"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="maven.multiModuleProjectDirectory" value="/Users/danielfrykman/git/02160-Group-7/FinalProject"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="DK"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/Users/danielfrykman/git/02160-Group-7/FinalProject"/>
+    <property name="java.runtime.version" value="1.8.0_291-b10"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home/jre/lib/endorsed"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.io.tmpdir" value="/var/folders/5b/r_6jd8yx3x7d810qjcyt8gw80000gn/T/"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="classworlds.conf" value="/Users/danielfrykman/eclipse-workspace/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf3424326743934728668.tmp"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/danielfrykman/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="10.16"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="user.home" value="/Users/danielfrykman"/>
+    <property name="user.timezone" value="Europe/Copenhagen"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="user.name" value="danielfrykman"/>
+    <property name="java.class.path" value="/Users/danielfrykman/.p2/pool/plugins/org.eclipse.m2e.maven.runtime_1.16.0.20200610-1735/jars/plexus-classworlds-2.6.0.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B package"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="da"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_291"/>
+    <property name="java.ext.dirs" value="/Users/danielfrykman/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/Users/danielfrykman/git/02160-Group-7/FinalProject/EMBEDDED"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase classname="Client management" name="The logistic company wants to create a new client" time="0.135"/>
+  <testcase classname="Client management" name="A client &quot;Salling&quot; want to update their information" time="0.015"/>
+  <testcase classname="Client management" name="A client &quot;Salling&quot; want to look at their containers" time="0.008"/>
+  <testcase classname="Client management" name="The logistic company wants to delete a client." time="0.005"/>
+  <testcase classname="Client management" name="A client want to give another client acces to view one or multiple choosen container(s)" time="0.005"/>
+  <testcase classname="Monitor internal status of container" name="Successfull reading of temperature #1" time="0.015"/>
+  <testcase classname="Monitor internal status of container" name="Successfull reading of temperature #2" time="0.005"/>
+  <testcase classname="Monitor internal status of container" name="Successfull reading of temperature #3" time="0.006"/>
+  <testcase classname="Monitor internal status of container" name="Add and dispay temperature hsitory #1" time="0.009"/>
+  <testcase classname="Monitor internal status of container" name="Add and dispay temperature hsitory #2" time="0.005"/>
+  <testcase classname="Monitor internal status of container" name="Add and dispay temperature hsitory #3" time="0.005"/>
+  <testcase classname="Monitor internal status of container" name="Add and display diffrent sensordata" time="0.008"/>
+  <testcase classname="Monitor internal status of container" name="Check that a timestamp is added when new sensordata is added" time="0.004"/>
+  <testcase classname="Journeys management" name="Journey registration" time="0.005"/>
+  <testcase classname="Journeys management" name="Failed journey registration #1" time="0.003"/>
+  <testcase classname="Journeys management" name="Failed journey registration #2" time="0.004"/>
+  <testcase classname="Journeys management" name="Failed journey registration #3" time="0.005"/>
+  <testcase classname="Journeys management" name="The logistic company wants to re-use a container for a new journey." time="0.004"/>
+  <testcase classname="Journeys management" name="The client wants to ship a container with &quot;Books&quot; from &quot;Helsinki&quot; to &quot;Dar es Salaam&quot;." time="0.004"/>
+</testsuite>
