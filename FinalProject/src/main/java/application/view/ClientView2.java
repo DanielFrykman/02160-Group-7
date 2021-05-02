@@ -27,7 +27,7 @@ public class ClientView2 extends JFrame {
 	private ClientController2 controller;
 	private JTable tblInventory;
 	private JLabel lblSession;
-
+	
 	public ClientView2(ClientController2 controller) {
 		this.controller = controller;
 		initGUI();
@@ -35,7 +35,7 @@ public class ClientView2 extends JFrame {
 
 	private void initGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Client View 2");
+		setTitle("Container: " + controller.getContainer().getId().toString());
 		setPreferredSize(new Dimension(800, 600));
 
 		JButton btnAddViewer = new JButton("Add viewer");
@@ -45,7 +45,22 @@ public class ClientView2 extends JFrame {
 				controller.addViewer();
 			}
 		});
+
+		JButton btnRemoveViewer = new JButton("Remove viewer");
+		btnRemoveViewer.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.removeViewer();
+			}
+		});
 		
+		if (controller.getContainer().getLatestJourney().getViewer()==null) {
+			btnRemoveViewer.setEnabled(false);
+		} else {
+			btnRemoveViewer.setEnabled(true);
+		}
+
+
 		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			@Override
@@ -60,6 +75,7 @@ public class ClientView2 extends JFrame {
 
 		JToolBar toolbar = new JToolBar();
 		toolbar.add(btnAddViewer);
+		toolbar.add(btnRemoveViewer);
 		toolbar.add(Box.createHorizontalGlue());
 		toolbar.add(lblSession);
 		toolbar.add(btnBack);
@@ -71,7 +87,7 @@ public class ClientView2 extends JFrame {
 		tblInventory.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-		
+
 			}
 		});
 		tblInventory.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);

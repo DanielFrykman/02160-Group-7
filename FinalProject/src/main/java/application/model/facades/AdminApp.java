@@ -80,6 +80,14 @@ public class AdminApp {
 	public void addViewer(Container container, String owner, String viewer) {
 		clientManager.addViewer(owner, viewer);
 		clientManager.shareContainer(container, viewer);
+		container.getLatestJourney().setViewer(searchClientByName(viewer));
+	}
+	
+	public void removeViewer(Container container, String owner) {
+		Client viewer = container.getLatestJourney().getViewer();
+		container.getLatestJourney().setViewer(null);
+		viewer.getViewerContainers().remove(container);
+		searchClientByName(owner).getViewers().remove(viewer);
 	}
 
 	public boolean checkClient(String name) {
@@ -108,6 +116,7 @@ public class AdminApp {
 	public ArrayList<Container> getAllContainers() {
 		return containerManager.getList();
 	}
+	
 
 	public Container getContainer(int index) {
 		return getAllContainers().get(index);

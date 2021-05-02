@@ -19,7 +19,7 @@ public class JourneyApp {
 	LogisticCompanyContainerManager containerManager = LogisticCompanyContainerManager.getInstance();
 	
 	public boolean newJourney(String clientName, String origin, String destination, String contend) {
-		Container container = journeyManager.newJourney(origin, destination, contend);
+		Container container = journeyManager.newJourney(origin, destination, contend, AdminApp.getInstance().searchClientByName(clientName));
 		if (container==null) return false;
 		clientManager.addContainerToClient(clientName, container);
 		return true;
@@ -37,5 +37,7 @@ public class JourneyApp {
 	public Journey getLatestJourneyByClientName(String name, int containerIndex) {
 		return AdminApp.getInstance().searchClientByName(name).getClientsContainers().get(containerIndex).getLatestJourney();
 	}
+	
+	
 
 }

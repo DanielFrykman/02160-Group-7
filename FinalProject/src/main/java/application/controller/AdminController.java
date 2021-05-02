@@ -1,10 +1,8 @@
 package application.controller;
 
-
-
 import application.model.facades.AdminApp;
 import application.model.tables.*;
-import application.popup.RegisterClientPopup;
+import application.popup.*;
 import application.view.*;
 
 public class AdminController {
@@ -13,7 +11,7 @@ public class AdminController {
 	private Session sessionModel;
 	private AdminView view;
 	private RegisterClientPopup clientPopup;
-	
+	private FindJourneyPopup journeyPopup;
 	
 	public AdminController(AdminTable inventory, Session session) {
 		this.adminModel = inventory;
@@ -24,12 +22,10 @@ public class AdminController {
 		clientPopup = new RegisterClientPopup(this);
 		clientPopup.setVisible(true);
 	}
-
-	public void deleteItem(int selectedRow) {
-		if (selectedRow >= 0) {
-			String productName = (String) adminModel.getValueAt(selectedRow, 0);
-			adminModel.removeProduct(productName);
-		}
+	
+	public void searchJourney() {
+		journeyPopup = new FindJourneyPopup(this);
+		journeyPopup.setVisible(true);
 	}
 
 	public void setView(AdminView view) {
@@ -38,19 +34,27 @@ public class AdminController {
 		this.view.setSession(sessionModel);
 	}
 	
+	
 	public void changePage() {
 		view.setVisible(false);
+		
 	}
 
 	public void display() {
 		view.setVisible(true);
 	}
+	
+	public void changeTable(String name) {
+		
+		ClientTable table = new ClientTable(sessionModel);	
+		table.overrideClientName(name);		
+		this.view.setTableModel(table);
+	}
 
 	public void logout() {
 		ApplicationController app = new ApplicationController();
 		app.login();
-		view.setVisible(false);
-		
+		view.setVisible(false);		
 	}
 
 	public void verifyNewClient(String name, String address, String referencePerson, String email) {
@@ -63,5 +67,4 @@ public class AdminController {
 				AdminApp.getInstance().createClient(name, address, referencePerson, email);				
 				clientPopup.setVisible(false);
 	}
-
 }

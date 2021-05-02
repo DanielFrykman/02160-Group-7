@@ -12,7 +12,7 @@ public class Client2Table extends AbstractTableModel {
 	
 	public void addJourney() {
 		
-		rowCount++;
+		//rowCount++;
 
 		fireTableDataChanged(); // notify the views that data changed
 	}
@@ -21,7 +21,7 @@ public class Client2Table extends AbstractTableModel {
 	
 	@Override
 	public int getColumnCount() {
-		return 6; // this is fixed: product and quantity
+		return 6; 
 	}
 
 	@Override

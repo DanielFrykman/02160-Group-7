@@ -19,6 +19,8 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableModel;
 
 import application.controller.ClientController;
+import application.model.Container;
+import application.model.facades.AdminApp;
 import application.model.tables.Session;
 
 public class ClientView extends JFrame {
@@ -35,7 +37,7 @@ public class ClientView extends JFrame {
 
 	private void initGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Client view 1");
+		setTitle("Home");
 		setPreferredSize(new Dimension(800, 600));
 
 		// buttons
@@ -50,7 +52,7 @@ public class ClientView extends JFrame {
 		btnUpdateInfo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.updateInfo();
+				controller.updateInfoPopup();
 			}
 		});
 		
@@ -81,7 +83,8 @@ public class ClientView extends JFrame {
 		tblInventory.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				controller.changePage(tblInventory.getSelectedRow());
+				Container container = controller.getContainer(tblInventory.getSelectedRow());
+				controller.changePage(container);
 			}
 		});
 		
@@ -89,11 +92,6 @@ public class ClientView extends JFrame {
 		pack();
 		setLocationRelativeTo(null);
 	}
-	
-//	public void resizeTable() {
-//		this.tblInventory.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-//	}
-
 
 	public void setTableModel(TableModel model) {
 		tblInventory.setModel(model);

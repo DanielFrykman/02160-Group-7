@@ -15,9 +15,12 @@ public class ClientController {
 	private ClientView view;
 	private AddJourneyPopup journeyPopup;
 	private UpdateInfoPopup updateInfoPopup;
-	
-	public ClientController(ClientTable inventory, Session session) {
-		this.clientModel = inventory;
+	private String clientName;
+
+	AdminApp adminApp = AdminApp.getInstance();
+
+	public ClientController(Session session) {
+		this.clientModel = new ClientTable(session);
 		this.sessionModel = session;
 	}
 
@@ -31,44 +34,58 @@ public class ClientController {
 		view.setVisible(true);
 	}
 	
+	public Container getContainer(int index) {
+		if(index<0) return adminApp.getContainer(index+1); //why is this necessary ¯\_(ツ)_/¯ 
+		return adminApp.getContainer(index);
+	}
+
 	public void logout() {
 		ApplicationController app = new ApplicationController();
 		app.login();
-		view.setVisible(false);
-		
+		view.setVisible(false);		
 	}
 
 	public void addJourney() {
 		journeyPopup = new AddJourneyPopup(this);
 		journeyPopup.setVisible(true);
-		
 	}
 
-	public void updateInfo() {
-		updateInfoPopup = new UpdateInfoPopup();
-		updateInfoPopup.updateInfoPopup();
+	public void updateInfoPopup() {
+		updateInfoPopup = new UpdateInfoPopup(this);
 		updateInfoPopup.setVisible(true);
 	}
+
+	public void updateClientInfo(String name, String address, String refrencePerson, String email) {
+		clientName = sessionModel.getUsername();
 	
-	public void changePage(int containerIndex) {
-		String clientName = sessionModel.getUsername();
-		Container container = AdminApp.getInstance().getClientContainersByName(clientName).get(containerIndex);
-		
-		view.setVisible(false);
-		sessionModel.getApplication().clientManager2(this.sessionModel);	
+		if(!address.equals("")) adminApp.updateClientAddress(clientName, address);
+		if(!refrencePerson.equals("")) adminApp.updateClientRefrencePerson(clientName, refrencePerson);
+		if(!email.equals("")) adminApp.updateClientEmail(clientName, email);
+		if(!name.equals("")) {
+			adminApp.updateClientName(clientName, name);
+			sessionModel.setUsername(name);
+		}
+		view.setSession(sessionModel);
+		updateInfoPopup.setVisible(false);
 	}
-	
+
+	public void changePage(Container container) {
+		clientName = sessionModel.getUsername();
+		view.setVisible(false);
+		sessionModel.getApplication().clientManager2(this.sessionModel, container);	
+	}
+
 	public void verifyNewJourney(String origin, String destination, String content) {
 		if (origin.equals("") || 
-			destination.equals("") || 
-			content.equals("")|| 
-			origin.equals(destination)) {
+				destination.equals("") || 
+				content.equals("")|| 
+				origin.equals(destination)) {
 			journeyPopup.showError();
 		} else {
 			JourneyApp.getInstance().newJourney(sessionModel.getUsername(), origin, destination, content);
-			clientModel.addJourney();
 			journeyPopup.setVisible(false);
-			//view.resizeTable();
+			clientModel.addJourney();
+			
 		}		
 	}
 }
