@@ -42,6 +42,10 @@ public class LogisticCompanyContainerManager extends Manager<Container> {
 		return getContainerByOrigin(origin);
 	}
 	
+	public void newSensordata(Container container, Float temp, String position, String humidity, String pressure) {
+		SensorData newSensorData = new SensorData(temp, position, humidity, new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()),pressure);
+		container.getLatestJourney().getLog().addSensorData(newSensorData);
+	}
 	public void newSensordata(Container container, Float temp, String position, String humidity) {
 		SensorData newSensorData = new SensorData(temp, position, humidity, new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date()));
 		container.getLatestJourney().getLog().addSensorData(newSensorData);

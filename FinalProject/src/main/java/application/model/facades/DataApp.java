@@ -19,6 +19,10 @@ public class DataApp {
 	public void newSensorDataAll(Container container, Float temp, String position, String humidity) {
 		containerManager.newSensordata(container, temp, position, humidity);
 	}
+	
+	public void newSensorDataAll(Container container, Float temp, String position, String humidity, String pressure) {
+		containerManager.newSensordata(container, temp, position, humidity, pressure);
+	}
 
 	public void newSensorDataTemp(Container container, Float temp) {
 		newSensorDataAll(container, temp, null, null);
@@ -42,6 +46,10 @@ public class DataApp {
 
 	public void newSensorDataPositionHumidity(Container container, String position, String humidity) {
 		newSensorDataAll(container, null, position, humidity);
+	}
+	
+	public void newSensorDataPressure(Container container, String pressure) {
+		newSensorDataAll(container, null, null, null, pressure);
 	}
 
 	public Log getLog(Journey journey) {

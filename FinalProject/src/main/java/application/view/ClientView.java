@@ -18,18 +18,18 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableModel;
 
-import application.controller.AdminController;
+import application.controller.ClientController;
 import application.model.Container;
 import application.model.tables.Session;
 
-public class AdminView extends JFrame {
+public class ClientView extends JFrame {
 
 	private static final long serialVersionUID = 989075282041187452L;
-	private AdminController controller;
+	private ClientController controller;
 	private JTable tblInventory;
 	private JLabel lblSession;
 
-	public AdminView(AdminController controller) {
+	public ClientView(ClientController controller) {
 		this.controller = controller;
 		initGUI();
 	}
@@ -40,28 +40,28 @@ public class AdminView extends JFrame {
 		setPreferredSize(new Dimension(800, 600));
 
 		// buttons
-		JButton btnRegister = new JButton("Register new client");
-		btnRegister.addActionListener(new ActionListener() {
+		JButton btnRegisterJourney = new JButton("Register new journey");
+		btnRegisterJourney.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.registerClient();
+				controller.addJourney();
 			}
 		});
-
-		JButton btnSearchJourney = new JButton("Search Joureny");
-		btnSearchJourney.addActionListener(new ActionListener() {
+		JButton btnUpdateInfo = new JButton("Update information");
+		btnUpdateInfo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.searchJourney();			
-			}		
+				controller.updateInfoPopup();
+			}
 		});
-
+		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				controller.logout();
 			}
+
 		});
 
 		// toolbar
@@ -69,8 +69,8 @@ public class AdminView extends JFrame {
 		lblSession.setHorizontalAlignment(SwingConstants.RIGHT);
 
 		JToolBar toolbar = new JToolBar();
-		toolbar.add(btnRegister);
-		toolbar.add(btnSearchJourney);
+		toolbar.add(btnRegisterJourney);
+		toolbar.add(btnUpdateInfo);
 		toolbar.add(Box.createHorizontalGlue());
 		toolbar.add(lblSession);
 		toolbar.add(btnLogout);
@@ -88,7 +88,6 @@ public class AdminView extends JFrame {
 		});
 		
 		add(new JScrollPane(tblInventory), BorderLayout.CENTER);
-
 		pack();
 		setLocationRelativeTo(null);
 	}
@@ -98,8 +97,8 @@ public class AdminView extends JFrame {
 
 	}
 
-
 	public void setSession(Session sessionModel) {
-		lblSession.setText("<html>" + sessionModel.getUsername() + " <i>(" + "Admin" + ")</i></html>");
+		lblSession.setText("<html>" + sessionModel.getUsername() + " <i>(" + "Client" + ")</i></html>");
 	}
+
 }

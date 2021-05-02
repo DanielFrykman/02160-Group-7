@@ -18,49 +18,56 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableModel;
 
-import application.controller.AdminController;
+import application.controller.ClientController2;
 import application.model.Container;
 import application.model.tables.Session;
 
-public class AdminView extends JFrame {
+public class ClientView2 extends JFrame {
 
-	private static final long serialVersionUID = 989075282041187452L;
-	private AdminController controller;
+	private static final long serialVersionUID = 989175282041187452L;
+	private ClientController2 controller;
 	private JTable tblInventory;
 	private JLabel lblSession;
-
-	public AdminView(AdminController controller) {
+	private Container container;
+	
+	public ClientView2(ClientController2 controller) {
 		this.controller = controller;
 		initGUI();
 	}
 
 	private void initGUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("Home");
+		setTitle("Container: " + controller.getContainer().getId().toString());
 		setPreferredSize(new Dimension(800, 600));
 
-		// buttons
-		JButton btnRegister = new JButton("Register new client");
-		btnRegister.addActionListener(new ActionListener() {
+		JButton btnAddViewer = new JButton("Add viewer");
+		btnAddViewer.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.registerClient();
+				controller.addViewer();
 			}
 		});
 
-		JButton btnSearchJourney = new JButton("Search Joureny");
-		btnSearchJourney.addActionListener(new ActionListener() {
+		JButton btnRemoveViewer = new JButton("Remove viewer");
+		btnRemoveViewer.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.searchJourney();			
-			}		
+				controller.removeViewer();
+			}
 		});
+		
+		if (controller.getContainer().getLatestJourney().getViewer()==null) {
+			btnRemoveViewer.setEnabled(false);
+		} else {
+			btnRemoveViewer.setEnabled(true);
+		}
 
-		JButton btnLogout = new JButton("Logout");
-		btnLogout.addActionListener(new ActionListener() {
+
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				controller.logout();
+				controller.goBack();
 			}
 		});
 
@@ -69,11 +76,11 @@ public class AdminView extends JFrame {
 		lblSession.setHorizontalAlignment(SwingConstants.RIGHT);
 
 		JToolBar toolbar = new JToolBar();
-		toolbar.add(btnRegister);
-		toolbar.add(btnSearchJourney);
+		toolbar.add(btnAddViewer);
+		toolbar.add(btnRemoveViewer);
 		toolbar.add(Box.createHorizontalGlue());
 		toolbar.add(lblSession);
-		toolbar.add(btnLogout);
+		toolbar.add(btnBack);
 		add(toolbar, BorderLayout.NORTH);
 
 		// table
@@ -82,24 +89,25 @@ public class AdminView extends JFrame {
 		tblInventory.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				Container container = controller.getContainer(tblInventory.getSelectedRow());
-				controller.changePage(container);
+
 			}
 		});
-		
+		tblInventory.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		add(new JScrollPane(tblInventory), BorderLayout.CENTER);
 
 		pack();
 		setLocationRelativeTo(null);
 	}
 
+
+
 	public void setTableModel(TableModel model) {
 		tblInventory.setModel(model);
 
 	}
 
-
 	public void setSession(Session sessionModel) {
-		lblSession.setText("<html>" + sessionModel.getUsername() + " <i>(" + "Admin" + ")</i></html>");
+		lblSession.setText("<html>" + sessionModel.getUsername() + " <i>(" + "Client" + ")</i></html>");
 	}
+
 }

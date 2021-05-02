@@ -48,6 +48,5 @@ public class Container {
 	public void addJourney(Journey newJourney) {
 		journeys.add(newJourney);
 	}
-
 	
 }
