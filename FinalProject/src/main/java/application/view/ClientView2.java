@@ -19,6 +19,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableModel;
 
 import application.controller.ClientController2;
+import application.model.Container;
 import application.model.tables.Session;
 
 public class ClientView2 extends JFrame {
@@ -27,6 +28,7 @@ public class ClientView2 extends JFrame {
 	private ClientController2 controller;
 	private JTable tblInventory;
 	private JLabel lblSession;
+	private Container container;
 	
 	public ClientView2(ClientController2 controller) {
 		this.controller = controller;

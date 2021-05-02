@@ -17,9 +17,9 @@ public class ClientController {
 	private UpdateInfoPopup updateInfoPopup;
 	private String clientName;
 
+	
 	AdminApp adminApp = AdminApp.getInstance();
-
-	public ClientController(Session session) {
+	public ClientController(ClientTable inventory, Session session) {
 		this.clientModel = new ClientTable(session);
 		this.sessionModel = session;
 	}

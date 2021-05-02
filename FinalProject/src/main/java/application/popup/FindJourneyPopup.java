@@ -35,16 +35,14 @@ public class FindJourneyPopup extends JFrame {
 		setLayout(new GridBagLayout());
 
 		JLabel nameLabel = new JLabel("Company name");
-		JLabel contentLabel = new JLabel("Content");
 		JTextField nameTxt = new JTextField(15);
-		JTextField contentTxt = new JTextField(15);
 		JButton btnSearch = new JButton("Search");
 
-		contentTxt.addKeyListener(new KeyListener() {
+		nameTxt.addKeyListener(new KeyListener() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					
+					controller.changeTable(nameTxt.getText());
 				}
 			}
 
@@ -71,14 +69,12 @@ public class FindJourneyPopup extends JFrame {
 
 		add(nameLabel, GridBagLayoutUtils.constraint(1, 0, 5, "left"));
 		add(nameTxt, GridBagLayoutUtils.constraint(1, 1, 5));
-		add(contentLabel, GridBagLayoutUtils.constraint(1, 2, 5, "left"));
-		add(contentTxt, GridBagLayoutUtils.constraint(1, 3, 5));
-		add(btnSearch, GridBagLayoutUtils.constraint(1, 4, 5));
+		add(btnSearch, GridBagLayoutUtils.constraint(1, 2, 5));
 
 		pack();
 		setLocationRelativeTo(null);
-
 	}
+	
 	public void showError() {
 		JOptionPane.showMessageDialog(this, "Fill in all text fields to create a client", "Register client error", JOptionPane.ERROR_MESSAGE);
 	}

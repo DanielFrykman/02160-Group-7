@@ -82,7 +82,8 @@ public class AdminView extends JFrame {
 		tblInventory.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
-				controller.changePage();
+				Container container = controller.getContainer(tblInventory.getSelectedRow());
+				controller.changePage(container);
 			}
 		});
 		

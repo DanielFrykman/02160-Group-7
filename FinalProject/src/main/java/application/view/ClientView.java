@@ -20,7 +20,6 @@ import javax.swing.table.TableModel;
 
 import application.controller.ClientController;
 import application.model.Container;
-import application.model.facades.AdminApp;
 import application.model.tables.Session;
 
 public class ClientView extends JFrame {

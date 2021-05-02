@@ -15,14 +15,15 @@ public class ClientController2 {
 	private Container container;
 	AdminApp adminApp = AdminApp.getInstance();
 
-	public ClientController2(Session session) {
-		clientModel = new Client2Table();
+	public ClientController2(Client2Table inventory, Session session) {
+		clientModel = inventory;
 		this.sessionModel = session;
 	}
 
 	public void setView(ClientView2 view) {
 		this.view = view;
 		this.view.setTableModel(clientModel);
+		this.clientModel.setContainer(this.container);
 		this.view.setSession(sessionModel);
 	}
 

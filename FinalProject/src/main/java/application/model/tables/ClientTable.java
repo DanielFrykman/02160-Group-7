@@ -11,7 +11,7 @@ public class ClientTable extends AbstractTableModel {
 	private static final long serialVersionUID = -8100080945080186023L;
 	Session session;
 	String clientname = null;
-	int rows;
+	int rows = 0;
 
 	AdminApp adminApp = AdminApp.getInstance();
 	JourneyApp journeyApp = JourneyApp.getInstance();
@@ -22,9 +22,9 @@ public class ClientTable extends AbstractTableModel {
 
 	public void overrideClientName(String newClient) {
 		clientname = newClient;
+		rows = adminApp.searchClientByName(clientname).getClientsContainers().size() + adminApp.getViewerContainers(clientname).size();
 	}
 	public void addJourney() {	
-		rows = adminApp.searchClientByName(session.getUsername()).getClientsContainers().size() + adminApp.getViewerContainers(session.getUsername()).size();
 		fireTableDataChanged(); // notify the views that data changed
 	}
 
@@ -35,6 +35,7 @@ public class ClientTable extends AbstractTableModel {
 
 	@Override
 	public int getRowCount() {
+		if(rows == 0) return adminApp.searchClientByName(session.getUsername()).getClientsContainers().size() + adminApp.getViewerContainers(session.getUsername()).size();
 		return rows;
 	}
 

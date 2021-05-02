@@ -7,8 +7,8 @@ public final class Session {
 
 	private AdminController adminController = new AdminController(new AdminTable(), this);
 	private AdminController2 adminController2 = new AdminController2(new Admin2Table(), this);
-	private ClientController clientController = new ClientController(this);
-	private ClientController2 clientController2 = new ClientController2(this);
+	private ClientController clientController = new ClientController(new ClientTable(this), this);
+	private ClientController2 clientController2 = new ClientController2(new Client2Table(), this);
 	private ApplicationController application;
 	
 	

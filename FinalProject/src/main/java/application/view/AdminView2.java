@@ -39,14 +39,27 @@ public class AdminView2 extends JFrame {
 
 		// buttons
 		JButton btnAddData = new JButton("Add data");
-
+		btnAddData.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.addDataPopup();		
+			}		
+		});
 				
 				
 		JButton btnRemoveData = new JButton("Remove data");
 		btnRemoveData.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-						
+				
+			}		
+		});
+		
+		JButton btnEndJourney = new JButton("End journey");
+		btnEndJourney.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				controller.endJourney();		
 			}		
 		});
 		
@@ -64,6 +77,7 @@ public class AdminView2 extends JFrame {
 		JToolBar toolbar = new JToolBar();
 		toolbar.add(btnAddData);
 		toolbar.add(btnRemoveData);
+		toolbar.add(btnEndJourney);
 		toolbar.add(Box.createHorizontalGlue());
 		toolbar.add(lblSession);
 		toolbar.add(btnBack);
@@ -80,7 +94,6 @@ public class AdminView2 extends JFrame {
 
 	public void setTableModel(TableModel model) {
 		tblInventory.setModel(model);
-
 	}
 
 

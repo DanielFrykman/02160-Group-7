@@ -10,6 +10,8 @@ public class SensorData {
 	
 	private String timeStamp;
 	
+	private String pressure;
+	
 	public String getHumidity() {
 		return humidity;
 	}
@@ -38,6 +40,22 @@ public class SensorData {
 		return timeStamp;
 	}
 
+	public String getPressure() {
+		return pressure;
+	}
+
+	public void setPressure(String pressure) {
+		this.pressure = pressure;
+	}
+
+	public SensorData(Float temp, String position, String humidity, String timeStamp, String pressure) {
+		super();
+		this.temp = temp;
+		this.position = position;
+		this.humidity = humidity;
+		this.timeStamp = timeStamp;
+		this.pressure = pressure;
+	}
 	public SensorData(Float temp, String position, String humidity, String timeStamp) {
 		super();
 		this.temp = temp;
